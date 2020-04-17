@@ -25,16 +25,18 @@ class Menu extends Phaser.Scene {
           fixedWidth:0
         };
 
-        let centerX = game.config.width/2;
-        let centerY = game.config.height/2;
+        let centerX = game.config.width / 2;
+        let centerY = game.config.height / 2;
 
         let textSpace = 64;
 
-        this.add.text(centerX,centerY-textSpace, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
-        this.add.text(centerX,centerY,'Use <- -> arrows to move and (F) to Fire',menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY - textSpace, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY, 'Use <- -> arrows to move and (F) to Fire', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000';
-        this.add.text(centerX,centerY + textSpace, 'Press <- for Easy or -> for Hard',menuConfig).setOrigin(.5);
+        this.add.text(centerX, centerY + textSpace, 'Press <- for Easy or -> for Hard', menuConfig).setOrigin(.5);
+        this.add.text(centerX, centerY + textSpace + 64, 'Press "R" to switch weapons', menuConfig).setOrigin(.5);
+
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);

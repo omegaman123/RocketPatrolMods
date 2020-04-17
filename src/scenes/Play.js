@@ -37,7 +37,7 @@ class Play extends Phaser.Scene {
         this.ship01 = new Spaceship(this, game.config.width + 192, 132, 'spaceship', 0, 30, 0).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + 96, 196, 'spaceship', 0, 20, 0).setOrigin(0, 0);
         this.ship03 = new Spaceship(this, game.config.width, 260, 'spaceship', 0, 10, 0).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width + 50, 230, 'smallShip', 0, 50, 2);
+        this.ship04 = new Spaceship(this, game.config.width + 50, 230, 'smallShip', 0, 50, 2).setOrigin(0, 0);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -63,6 +63,7 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         };
         this.scoreLeft = this.add.text(69, 54, this.p1Score, scoreConfig);
+        this.scoreRight = this.add.text(game.config.width - 156, 54, highScore, scoreConfig);
 
 
         //timer
@@ -78,6 +79,10 @@ class Play extends Phaser.Scene {
         this.clock = this.time.delayedCall(60000, () => {
             this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width / 2, game.config.height / 2 + 64, '(F)ire to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
+            if (this.p1Score > highScore) {
+                highScore = this.p1Score;
+                this.add.text(game.config.width / 2, game.config.height / 2 + 64 * 2, 'NEW HIGH SCORE!', scoreConfig).setOrigin(.5);
+            }
             this.gameOver = true;
         }, null, this);
     }
