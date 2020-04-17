@@ -9,7 +9,7 @@ let config = {
 
 
 let game = new Phaser.Game(config);
-let keyF, keyLEFT, keyRIGHT;
+let keyF, keyLEFT, keyRIGHT, keyR;
 
 // define game settings
 game.settings = {
