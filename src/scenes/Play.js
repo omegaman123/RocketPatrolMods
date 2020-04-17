@@ -18,13 +18,20 @@ class Play extends Phaser.Scene {
         });
         this.load.image('smallShip', './assets/ship2.png');
         this.load.image('rocket2', './assets/rocket2.png');
+        this.load.image('bg2','./assets/bg02.png');
+        this.load.image('bg3','./assets/bg03.png');
 
     }
 
 
     create() {
         //place tile sprite
+
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.bg2 = this.add.tileSprite(0,0,640,480,'bg2').setOrigin(0,0);
+        this.bg3 = this.add.tileSprite(0,0,640,480,'bg3').setOrigin(0,0);
+
+
 
         //white rectangle background
         this.add.rectangle(5, 5, 630, 32, 0xFACADE).setOrigin(0, 0);
@@ -34,10 +41,11 @@ class Play extends Phaser.Scene {
         this.p1Rocket = new Rocket(this, game.config.width / 2, 431, 'rocket');
 
         //define shps
-        this.ship01 = new Spaceship(this, game.config.width + 192, 132, 'spaceship', 0, 30, 0).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + 96, 196, 'spaceship', 0, 20, 0).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width, 260, 'spaceship', 0, 10, 0).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width + 50, 230, 'smallShip', 0, 50, 2).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + 192, 132, 'spaceship', 0, 30, 1,direction[getRandomInt(2)]).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + 96, 196, 'spaceship', 0, 20, 1,direction[getRandomInt(2)]).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width, 260, 'spaceship', 0, 10, 1,direction[getRandomInt(2)]).setOrigin(0, 0);
+        this.ship04 = new Spaceship(this, game.config.width + 50, 230, 'smallShip', 0, 50, 2,direction[getRandomInt(2)]).setOrigin(0, 0);
+
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -97,6 +105,9 @@ class Play extends Phaser.Scene {
         }
         //scroll starfield
         this.starfield.tilePositionX -= 4;
+        this.bg2.tilePositionX -=.1;
+        this.bg3.tilePositionX -=.05;
+
         if (!this.gameOver) {
             this.p1Rocket.update();       // update rocket sprite
             if (this.p1Rocket.currentWeapon === 0) {
@@ -174,3 +185,6 @@ function onEvent() {
     this.timeCount.setText('Time Left: ' + formatTime(this.initialTime));
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
