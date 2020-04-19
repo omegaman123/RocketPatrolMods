@@ -99,7 +99,7 @@ class Play extends Phaser.Scene {
                 highScore = this.p1Score;
                 this.add.text(game.config.width / 2, game.config.height / 2 + 64 * 2, 'NEW HIGH SCORE!', scoreConfig).setOrigin(.5);
             }
-            music.mute = true;
+            this.music.stop();
             this.gameOver = true;
         }, null, this);
     }
