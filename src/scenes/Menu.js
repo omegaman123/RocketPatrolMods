@@ -36,6 +36,9 @@ class Menu extends Phaser.Scene {
         menuConfig.color = '#000';
         this.add.text(centerX, centerY + textSpace, 'Press <- for Easy or -> for Hard', menuConfig).setOrigin(.5);
         this.add.text(centerX, centerY + textSpace + 64, 'Press "R" to switch weapons', menuConfig).setOrigin(.5);
+        this.add.text(centerX,centerY+ 2*textSpace+32 ,'HIGH SCORE',menuConfig).setOrigin(.5);
+        this.add.text(centerX,centerY+ 2*textSpace +64, highScore ,menuConfig).setOrigin(.5);
+
 
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

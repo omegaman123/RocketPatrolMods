@@ -6,9 +6,10 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         this.speed = speed;
         this.direction = tdirection;
         if (this.direction ===-1){
-            this.x = 0;
+            this.x = 0 - getRandomInt(60);
             this.flipX = true;
         }
+        console.log(this.x);
     }
 
     update() {

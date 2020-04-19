@@ -30,6 +30,12 @@ class Rocket extends Phaser.GameObjects.Sprite {
 
         //fire button
         if (Phaser.Input.Keyboard.JustDown(keyF)) {
+            if (this.currentWeapon ===1) {
+                if(this.r1 !== undefined || this.r2 !== undefined){
+                    this.r1.reset();
+                    this.r2.reset();
+                }
+            }
                 this.isFiring = true;
             this.sfxRocket.play();
         }
@@ -41,11 +47,14 @@ class Rocket extends Phaser.GameObjects.Sprite {
                     this.x += 2;
                 }
                 this.y -= 1.5;
-            } else if (this.currentWeapon === 1) {
+            }  if (this.currentWeapon === 1) {
                 this.y -= 5;
             }
         }
         if (this.y <= 108) {
+            if (this.alive !== undefined && this.alive ===1 ){
+                this.reset();
+            }
             this.isFiring = false;
             this.y = 431;
         }
@@ -53,6 +62,9 @@ class Rocket extends Phaser.GameObjects.Sprite {
     }
 
     reset() {
+        if (this.alive !== undefined && this.alive === 1 ){
+            this.destroy();
+        }
         this.isFiring = false;
         this.y = 431;
     }
