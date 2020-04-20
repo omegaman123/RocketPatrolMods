@@ -12,7 +12,7 @@ Mods Added: <br/>
   Parallax Scrolling:      -------------------------   15 <br/>
   New Weapon Type:          ------------------------  25 <br/>
   BackGround Music:         ------------------------  10 <br/>
-  New Menu Background:       --------------------  10 <br/>
+  New Menu Background:       --------------------  15 <br/>
   
   Music from: https://opengameart.org/content/pulsar-famitracker-2a03
   
