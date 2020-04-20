@@ -8,6 +8,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/explosion38.wav');
         this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.image('menu_bg','./assets/dumb.png');
     }
 
     create() {
@@ -30,6 +31,7 @@ class Menu extends Phaser.Scene {
 
         let textSpace = 64;
 
+        this.add.tileSprite(0,0,640,480,'menu_bg').setOrigin(0,0);
         this.add.text(centerX, centerY - textSpace, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
         this.add.text(centerX, centerY, 'Use <- -> arrows to move and (F) to Fire', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
